@@ -1,26 +1,261 @@
-@import "tailwindcss";
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@font-face {
+  font-family: 'Google Sans Display';
+  src: url('/fonts/GoogleSans-normal-400-100.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@font-face {
+  font-family: 'Product Sans';
+  src: url('/fonts/ProductSans-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+
+
+/* Base (Mobile First)   */
+body {
+  margin: 0;
+  font-family: 'Product Sans';
+  scroll-behavior: smooth;
+}
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+nav {
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+  padding: 15px 20px;
+  gap: 10px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column; 
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+nav a {
+  font-family: 'Google Sans Display';
+  text-decoration: none;
+  color: #00175D;
+  font-weight: 600;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  background: #00175D;
+  color: white;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 100px 20px 60px; 
+}
+
+.hero h1 {
+  font-size: 2rem;
+}
+
+.hero p {
+  margin-top: 10px;
+  font-size: 1rem;
+}
+
+.hero a {
+  display: inline-block;
+  margin-top: 20px;
+  background: white;
+  color: #00175D;
+  padding: 10px 20px;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.hero a:hover {
+  background: #f0f0f0;
+}
+
+/* About */
+#about {
+  padding: 60px 20px;
+  max-width: 800px;
+  margin: auto;
+}
+
+#about h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
+
+#about blockquote {
+  font-style: italic;
+  background: #f9f9f9;
+  padding: 15px;
+  border-left: 5px solid #00175D;
+}
+
+#about p {
+  margin-top: 20px;
+  line-height: 1.6;
+}
+
+/* Events */
+#events {
+  padding: 60px 20px;
+  background: #f3f3f3;
+}
+
+#events h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 1.5rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer */
+footer {
+  background-color: #011142;
+  color: #fff;
+  text-align: center;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+footer img {
+  max-width: 120px;
+  height: auto;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.8rem;
+  opacity: 0.8;
+}
+
+footer .socials {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+footer .socials a {
+  color: #92d7ff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+  
+}
+
+footer .socials a:hover {
+  color: #0070f3;
+}
+
+/* Hidden text (accessibility) */
+.visually-hidden {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+
+/* Tablet (>=640px) */
+@media (min-width: 640px) {
+  nav {
+    flex-direction: row; 
+    justify-content: space-between;
+  }
+
+  nav ul {
+    flex-direction: row; 
+    gap: 20px;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1.2rem;
+  }
+
+  #events h2,
+  #about h2 {
+    font-size: 2rem;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+
+  footer img {
+    max-width: 150px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+
+/* Desktop (>=1024px) */
+@media (min-width: 1024px) {
+  .hero h1 {
+    font-size: 3rem;
+  }
+
+  .hero p {
+    font-size: 1.3rem;
+  }
+
+  .cards {
+    grid-template-columns: repeat(3, 1fr); 
+  }
+
+  footer p {
+    font-size: 0.9rem;
+  }
 }
